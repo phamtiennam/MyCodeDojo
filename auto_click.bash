@@ -1,5 +1,9 @@
 #!/bin/bash
 
+check_xdotool(){
+	[ -z "$(which xdotool)" ] && sudo apt-get install xdotool
+}
+
 right_click(){
 	xdotool click 3
 	sleep 1
@@ -74,4 +78,6 @@ shaiya(){
 		echo =====================Done===========================
 	done	
 }
+#=================================Main==========================================
+check_xdotool
 shaiya
