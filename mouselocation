@@ -1,0 +1,20 @@
+#!/bin/bash
+get_mouse_location(){
+	local tmp=$(xdotool getmouselocation | awk '{print $1,$2}'|sed 's/x://g;s/y://g')
+	echo $tmp
+}
+case $1 in 
+  enter|q1|q2|act)
+    echo "$1 $(get_mouse_location)" >> setup
+    ;;
+  *)
+cat << EOF
+usage: ./mouselocation [options]
+
+[options]: enter
+           q1
+           act
+           q2
+EOF
+  ;;
+esac
