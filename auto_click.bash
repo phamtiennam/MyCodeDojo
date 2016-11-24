@@ -39,8 +39,7 @@ right_action(){
 	local y="$2"
 	mouse_move $1 $2
 	sleep 1
-	#multi_clicks right 5
-	multi_clicks right 2
+	multi_clicks right 5
 }
 
 left_action(){
@@ -48,8 +47,7 @@ left_action(){
 	local y="$2"
 	mouse_move $1 $2
 	sleep 1
-	#multi_clicks left 5
-	multi_clicks left 2
+	multi_clicks left 5
 }
 
 shaiya(){
@@ -63,7 +61,6 @@ shaiya(){
 
 
 	while [ 1 ];do
-          #when finished quest
 		echo =====================Start===========================
                 left_action $enter_quest 
                 
