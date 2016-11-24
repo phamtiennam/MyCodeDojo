@@ -9,6 +9,11 @@ It has tested in Ubuntu 14.04
 Note: The author uses this script to Shaiya EP8 in November 2016.
 Shaiya game has to run on Ubuntu first.
 
-
+Running:
+$ ./mouselocation enter
+$ ./mouselocation q1
+$ ./mouselocation act
+$ ./mouselocation q2
+$ ./auto_click.bash
 
 
