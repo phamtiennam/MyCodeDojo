@@ -1,0 +1,69 @@
+**************This task is from one of customers on Upwork.com*************
+******************************************************************************
+
+Description
+==========
+An investigation agency has amassed a large number of important case 
+files on separate flash memory and portable drives. The agency now wish 
+to copy these to permanent server storage. 
+
+At present all files for a particular investigative case are stored in individual
+directories bearing the name of the case.
+It is desired to copy the whole directory structure from the portable storage 
+device to permanent file storage as is.
+
+This could be achieved using the simple “cp” command.
+E.g. cp $1 $2
+cp /mnt/sdb1 ~/my-documents/case_arch
+However all of the files have default non-meaningful file names. (e.g. 
+IMG_0123.jpg, IMG_0002.JPG, Document1.doc, Document2.docx) and 
+it is required that these files are copied with more useful names based on 
+the name of the parent directory.
+For example if there is a directory called “clinton” containing the files, 
+IMG_1234.jpg, IMG_4321.JPG and Document1.doc these should be 
+copied to the “clinton” directory on the target drive but with the file names 
+changed to clinton1.jpg, clinton2.JPG and clinton1.doc.
+You have been asked to develop a Linux bash shell script which will 
+reliably copy original case directories and files from the flash/portable drive 
+to the permanent storage file space whilst automatically renaming as 
+specified above.
+It is also absolutely imperative for the company’s business that no file is
+ever lost by being omitted or over-written.
+The script will need to function with flash/portable drives potentially 
+containing tens of thousands of files and should therefore be reasonably 
+efficient in its operation.
+
+SPECIFICATION
+The case custom copy script must be named “cccp” and should be 
+located in the ~/my-applications/bin directory. 
+It will be used as:
+cccp removable_pathname archive_dir_path
+Examples:
+$ cccp /mnt/sdb1 ~/my-documents/case_arch
+$ cccp /mnt/sdb1 ../recordsarc
+$ cccp sdb1 /root/records/archive
+The first example above would copy all the files from /mnt/sdb1, and any 
+sub-directories within this directory, to the ~/my-documents/case_arch
+renaming the files in the process
+1. The script should be efficient, robust and cope with possible user 
+error.
+o If the archive directory does not already exist, the script must
+create it.
+o If the archive directory is not empty then the script should 
+report this as an error and then, as a precaution, terminate.
+o If the source directory does not exist, the script should report 
+an error.
+o If the user omits either of the two arguments then the script 
+should provide a helpful error message as in:-
+“Usage : cccp source_path archive_path”
+2. Care must be taken when renaming and copying files so that no 
+files are copied with the same name as one already existing in the 
+target directory, resulting in the loss of the latter.
+3. Challenge.
+The script may need to operate on very large collections of files. 
+This means that, even if it is efficient, it still might take a long time to 
+run.
+Therefore the script should include checks to make sure that 
+another instance of the script is not already in operation before it 
+starts. If another instance of the script is running then the second 
+one should terminate with an error message.
