@@ -1,5 +1,11 @@
 #!/bin/bash
 
+#Purpose: get the winner numbers from http://www.singaporepools.com.sg
+#Author: NamPham<nampt282@gmail.com>
+#Date: Dec 06 2016
+######################################################################
+######################################################################
+
 get_data_webpage(){
   local url="$1"
   local output="$2"
