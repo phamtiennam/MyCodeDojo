@@ -1,0 +1,19 @@
+#!/bin/sh
+:
+#Purpose: it automatically create the headlines of new shell scripts
+#Author: NamPham
+#Email: nampt282@gmail.com
+#Date: 2016_12_06
+
+file_name="$1"
+
+cat <<EOF >$file_name
+#!/bin/bash
+
+####################################################################
+#Purpose:
+#Author: NamPham
+#Email: nampt282@gmail.com
+#Date: $(date +%Y_%m_%d)
+####################################################################
+####################################################################
