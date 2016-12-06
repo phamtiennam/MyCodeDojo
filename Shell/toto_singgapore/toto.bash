@@ -3,7 +3,7 @@
 get_data_webpage(){
   local url="$1"
   local output="$2"
-  curl $url -o $output
+  curl -s $url -o $output
 }
 
 get_winner_numbers(){
