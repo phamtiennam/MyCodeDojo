@@ -1,0 +1,46 @@
+===========================================Task from Upwork.com 2016_DEC_07=========================
+====================================================================================================
+
+Write a bash script that generate the dhcpd.conf configuration file as following:
+
+The script will take the range of IP addresses and ping each IP addresses.
+Get the MAC addresses from arp table and create DHCP registration based on MAC address.
+So that DHCP server gives out network configuration information to clients based on MAC addresses.
+
+#
+# DHCP Server Configuration file.
+#  see /usr/share/doc/dhcp*/dhcpd.conf.sample
+#
+ddns-update-style interim;
+ignore client-updates;
+
+subnet 139.182.148.0 netmask 255.255.254.0 {
+        option routers                  139.182.148.1;
+        option subnet-mask              255.255.254.0;
+
+        option domain-name              "cse.edu";
+        option domain-name-servers      139.182.2.1, 139.182.154.13;
+
+        option time-offset              -28800;
+
+        default-lease-time              21600;
+        max-lease-time                  43200;
+}
+
+host coyote-120 {
+        hardware ethernet 2c:27:d7:3b:4d:65;
+        fixed-address 139.182.148.120;
+}
+host coyote-121 {
+        hardware ethernet 2c:27:d7:3b:49:df;
+        fixed-address 139.182.148.121;
+}
+
+……………
+
+host coyote-130 {
+        hardware ethernet 2c:27:d7:3b:4d:58;
+        fixed-address 139.182.148.130;
+}
+
+
