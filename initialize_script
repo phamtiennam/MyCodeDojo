@@ -1,0 +1,47 @@
+#!/bin/sh
+
+#Description: it automatically create the headlines of new shell scripts
+#Author: NamPham
+#Email: nampt282@gmail.com
+#Date: 2016_12_06
+
+create_file(){
+
+local file_name="$1"
+
+cat <<EOF >$file_name
+
+####################################################################
+#Description:
+#Author: NamPham
+#Email: nampt282@gmail.com
+#Date: $(date +%Y_%m_%d)
+####################################################################
+####################################################################
+EOF
+
+}
+
+_main_(){
+
+  local type_of_script="$1"
+  local file_name="$2"
+  if [ -n "$file_name"  ]; then create_file $file_name; fi
+
+  case $type_of_script in
+    bash)
+      sed -i  "1 i\#!/bin/bash" "$file_name"
+      ;;
+    python|py)
+      sed -i  "1 i\#!/usr/bin/python" "$file_name"
+      ;;
+    *)
+      echo "Usage: initialize_script <bash/python> <file_name>"
+      exit 0
+      ;;
+  esac
+
+  chmod +x $file_name
+}
+
+_main_ $@
