@@ -15,22 +15,26 @@ class untarpackage:
 
   extract_dir = "qca.git"
 
-  #def __init__(self,name,path):
-  def __init__(self,name):
+  def __init__(self,name,path,dir_name):
     self.name = name
-    #self.path = path
+    self.path = path
+    self.dir_name = dir_name
 
   def untar(self):
-    temp_dir = "temp_dir"
-    os.mkdir(temp_dir, 0777)
+    print(self.path)
+    os.mkdir(self.path, 0777)
     from pyunpack import Archive
-    #print(Archive(self.name).extractall(self.path))
-    Archive(self.name).extractall(temp_dir)
-    print(os.listdir(temp_dir))
+    Archive(self.name).extractall(self.path)
 
+  def rename_(self):
+    for dir in  os.listdir(self.path):
+      old_name = os.path.join(self.path, dir)
 
+    new_name = os.path.join(self.path, self.dir_name)
 
-action = untarpackage("b161005-r00004.1-qca-networking-2016-spf-4-0_qca_oem-83ab7450f.zip")
-action.untar()
+    os.rename(old_name,new_name)
 
-#os.rename(os.listdir(temp_dir),"namtest234")
+action = untarpackage("src/b161005-r00004.1-qca-networking-2016-spf-4-0_qca_oem-83ab7450f.zip","1","qca.git")
+#action.untar()
+action.rename_()
+
