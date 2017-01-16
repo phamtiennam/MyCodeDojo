@@ -9,6 +9,7 @@
 ####################################################################
 
 import os
+import sys
 import tempfile
 
 class untarpackage:
@@ -34,7 +35,12 @@ class untarpackage:
 
     os.rename(old_name,new_name)
 
-action = untarpackage("src/b161005-r00004.1-qca-networking-2016-spf-4-0_qca_oem-83ab7450f.zip","1","qca.git")
-#action.untar()
-action.rename_()
+def main(argv):
+  #usage: python.script <source_qsdk> <path_untar>
+  action = untarpackage(sys.argv[1],sys.argv[2],"qca.git")
+  action.untar()
+  action.rename_()
+
+if __name__ == "__main__":
+  main(sys.argv)
 
