@@ -1,0 +1,30 @@
+#!/bin/bash
+
+####################################################################
+#Description:library of functions
+#Author: NamPham
+#Email: nampt282@gmail.com
+#Date: 2017_02_23
+####################################################################
+####################################################################
+
+
+echo_func(){
+  echo "======================$1=============================================="
+}
+
+check_input(){
+  echo_func ${FUNCNAME[0]}
+  [ -z $@ ]&&{
+    echo "Usage: $0 <build directory>"
+    exit 0
+  }
+}
+
+create_workspace(){
+  echo_func ${FUNCNAME[0]}
+
+  local workspace="$1"
+  mkdir -p $workspace
+}
+
