@@ -36,7 +36,7 @@ _main_(){
       sed -i  "1 i\#!/usr/bin/python" "$file_name"
       ;;
     *)
-      echo "Usage: initialize_script <bash/python> <file_name>"
+      echo "Usage: $0 <bash/python> <file_name>"
       exit 0
       ;;
   esac
