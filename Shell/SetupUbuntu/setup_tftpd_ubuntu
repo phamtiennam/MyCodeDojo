@@ -1,0 +1,44 @@
+#!/bin/bash
+
+####################################################################
+#Description:To setup TFPT server on Ubuntu
+#Author: NamPham
+#Email: nampt282@gmail.com
+#Date: 2017_03_23
+####################################################################
+###################################################################
+
+install_package(){
+  sudo apt-get install xinetd tftpd tftp
+}
+
+config_tftpd(){
+  local tftp_config="$1"
+cat << EOF > $tftp_config
+service tftp
+{
+protocol        = udp
+port            = 69
+socket_type     = dgram
+wait            = yes
+user            = nobody
+server          = /usr/sbin/in.tftpd
+server_args     = /tftpboot
+disable         = no
+}
+EOF
+}
+
+mkdir_tftpboot(){
+  sudo mkdir /tftpboot
+  sudo chmod -R 777 /tftpboot
+  sudo chown -R nobody /tftpboot
+}
+
+#Main
+install_package
+config_tftpd /etc/xinetd.d/tftp
+mkdir_tftpboot
+sudo service xinetd restart
+
+
