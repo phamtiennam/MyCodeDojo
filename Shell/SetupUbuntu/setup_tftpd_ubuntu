@@ -14,7 +14,7 @@ install_package(){
 
 config_tftpd(){
   local tftp_config="$1"
-cat << EOF > $tftp_config
+sudo bash -c "cat << EOF > $tftp_config
 service tftp
 {
 protocol        = udp
@@ -26,11 +26,11 @@ server          = /usr/sbin/in.tftpd
 server_args     = /tftpboot
 disable         = no
 }
-EOF
+EOF"
 }
 
 mkdir_tftpboot(){
-  sudo mkdir /tftpboot
+  sudo mkdir -p /tftpboot
   sudo chmod -R 777 /tftpboot
   sudo chown -R nobody /tftpboot
 }
