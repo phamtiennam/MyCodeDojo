@@ -35,10 +35,19 @@ mkdir_tftpboot(){
   sudo chown -R nobody /tftpboot
 }
 
+test_tftpd(){
+  local test_file="test_tftpd"
+  local ip="127.0.0.1"
+  echo "Create /tftpboot/$test_file  ..."
+  sudo bash -c "echo whatever > /tftpboot/$test_file"
+  echo "Type \"get ${test_file} \" then \"quit\" "
+  tftp $ip
+}
+
+
 #Main
 install_package
 config_tftpd /etc/xinetd.d/tftp
 mkdir_tftpboot
 sudo service xinetd restart
-
-
+test_tftpd
