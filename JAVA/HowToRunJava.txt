@@ -1,0 +1,6 @@
+-step 1: make HelloWorld.java
+Note: name of class is name of file
+-Step2: compile java file
+	javac HelloWorld.java
+-Step3: execute java file
+	java HelloWorld 
