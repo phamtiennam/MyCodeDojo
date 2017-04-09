@@ -9,11 +9,18 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #include <stdio.h>
 
+int sum_of_2(int a,int b){
+	int sum;
+	sum=a+b;
+	return sum;       
+}
+
 int main() {
 	int a,b;
-	printf("Type the input:\n");
+	printf("Type in 2 intergers:\n");
 	scanf("%d", &a);
 	scanf("%d", &b);
-	printf("a la%d:\n", a);
-	printf("b la%d:\n", b);
+	printf("a la:%d\n", a);
+	printf("b la:%d\n", b);
+	printf("sumary of %d and %d is:%d\n", a, b, sum_of_2(a,b));
 }
