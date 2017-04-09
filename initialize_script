@@ -40,6 +40,10 @@ _main_(){
       os=".bak"
       sed -i $os "s/\#/\/\//g" "$file_name"
       ;;  
+    c)
+      os=".bak"
+      sed -i $os "s/\#/\/\//g" "$file_name"
+      ;;
     *)
       echo "Usage: $0 <bash/python> <file_name>"
       exit 0
