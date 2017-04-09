@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class age_input {
 	public static void main(String[] args) {
-		int age = 25;
+		int age ;
 		Scanner ageScan = new Scanner(System.in);
 		age = ageScan.nextInt();
 
