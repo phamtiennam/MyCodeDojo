@@ -39,10 +39,12 @@ _main_(){
     java)
       os=".bak"
       sed -i $os "s/\#/\/\//g" "$file_name"
+      rm -rf *.bak
       ;;  
     c)
       os=".bak"
       sed -i $os "s/\#/\/\//g" "$file_name"
+      rm -rf *.bak
       ;;
     *)
       echo "Usage: $0 <bash/python> <file_name>"
