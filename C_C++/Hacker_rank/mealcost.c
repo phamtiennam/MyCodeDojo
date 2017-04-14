@@ -5,28 +5,29 @@
 //Email: nampt282@gmail.com
 //Date: 2017_04_13
 #include <stdio.h>
+#include <math.h>
 
-float cal_percent(float a,int b){
-	float result;
+double cal_percent(double a,int b){
+	double result;
 	result = (a*b)/100;
 	return result;
 }
-int sum_all(float a,float b,float c){
-	int sum;
+double sum_all(double a,double b,double c){
+	double sum;
 	sum=a+b+c;
 	return sum;
 }
 int main(){
-	float meal_price,post_tip,post_tax;
+	double meal_price,post_tip,post_tax;
 	int tip_percent,tax_percent;
 
-	scanf("%f", &meal_price);
+	scanf("%lf", &meal_price);
 	scanf("%d", &tip_percent);
 	scanf("%d", &tax_percent);
 
 	post_tip=cal_percent(meal_price,tip_percent);
 	post_tax=cal_percent(meal_price,tax_percent);
 
-	printf("The total meal cost is %d dollars.\n", sum_all(meal_price,post_tip,post_tax));
+	printf("The total meal cost is %ld dollars.\n", lround(sum_all(meal_price,post_tip,post_tax)));
 	return 0;
 }
