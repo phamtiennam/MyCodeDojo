@@ -9,7 +9,7 @@
 //If n is even and greater than 20, print Not Weird
 //Complete the stub code provided in your editor to print whether or not n is weird.
 //----------------------------
-//Author: NamPham
+//Coder: NamPham
 //Email: nampt282@gmail.com
 //Date: 2017_04_15
 

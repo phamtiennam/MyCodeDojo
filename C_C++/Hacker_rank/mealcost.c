@@ -1,7 +1,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Description:Given the meal price (base cost of a meal), tip percent (the percentage of the meal price being added as tip), and tax percent (the percentage of the meal price being added as tax) for a meal, find and print the meal's total cost.
-//Author: NamPham
+//Coder: NamPham
 //Email: nampt282@gmail.com
 //Date: 2017_04_13
 #include <stdio.h>

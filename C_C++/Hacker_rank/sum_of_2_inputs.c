@@ -1,7 +1,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Description:Code that reads input from stdin is provided for you in the editor. There are  lines of input, and each line contains a single integer
-//Author: NamPham
+//Coder: NamPham
 //Link Reference:https://www.hackerrank.com/challenges/solve-me-first
 //Email: nampt282@gmail.com
 //Date: 2017_04_09

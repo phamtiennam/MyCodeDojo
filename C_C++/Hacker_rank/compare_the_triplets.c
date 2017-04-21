@@ -12,7 +12,7 @@
 //Comparison points is the total points a person earned.
 //
 //Given  and , can you compare the two challenges and print their respective comparison points?
-//Author: NamPham
+//Coder: NamPham
 //Email: nampt282@gmail.com
 //Date: 2017_04_15
 #include <stdio.h>

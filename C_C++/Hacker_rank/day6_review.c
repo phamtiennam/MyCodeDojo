@@ -17,7 +17,7 @@
 //  Hce akr
 //  Rn ak
 //
-//Author: NamPham
+//Coder: NamPham
 //Email: nampt282@gmail.com
 //Date: 2017_04_18
 
@@ -31,7 +31,7 @@ int main(){
 	scanf("%d", &T); //the number of test cases.
 
 	for(int i=0;i<T;i++){
-		scanf(" %s", strings[i]);
+		scanf(" %[^\n]", strings[i]);
 	}
 	for (i=0;i<T;i++){
 		m = n = j = 0;
