@@ -25,30 +25,27 @@
 #include<string.h> 
 
 int main(){
-	int T,i,j,m,n;
-	char strings[T][10000],odd[10000],even[10000];
+	int T,i,j,length;
+	char strings[10000];
 
 	scanf("%d", &T); //the number of test cases.
 
 	for(int i=0;i<T;i++){
-		scanf(" %[^\n]", strings[i]);
-	}
-	for (i=0;i<T;i++){
-		m = n = j = 0;
-		odd[0]='\0';
-		even[0]='\0';
-		while(strings[i][j] != '\0'){
-			if (j % 2 == 0){
-				even[m++] = strings[i][j];
+		length=0;
+		scanf(" %[^\n]", strings);
+		length=strlen(strings);
+		for(j=0;j<length;j++){
+			if(j % 2 == 0){
+				printf("%c", strings[j]);
 			}
-			else {
-				odd[n++] = strings[i][j];
+		}	
+		printf(" ");
+		for(j=0;j<length;j++){
+			if(j % 2 != 0){
+				printf("%c", strings[j]);
 			}
-			j++;
 		}
-		even[m]='\0';
-		odd[m]='\0';
-		printf("%s  %s\n", even, odd);
-	}	
+		printf("\n");
+	}
 	return 0;
 }
