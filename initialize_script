@@ -14,7 +14,7 @@ cat <<EOF >$file_name
 
 ####################################################################
 #Description:
-#Author: NamPham
+#Coder: NamPham
 #Email: nampt282@gmail.com
 #Date: $(date +%Y_%m_%d)
 ####################################################################
