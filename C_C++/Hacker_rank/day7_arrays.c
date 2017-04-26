@@ -17,15 +17,14 @@ Print the elements of array  in reverse order as a single line of space-separate
 #include<stdlib.h>
 
 int main(){
-	int n,lengh=0;
+	int n;
 	scanf("%d", &n);
 	int *arr = malloc(sizeof(int) * n);
 
 	for(int arr_i=0;arr_i<n;arr_i++){
 		scanf("%d",&arr[arr_i]);
-		lengh++;
 	}
-	for(int j=lengh-1;j>=0;j--){
+	for(int j=n-1;j>=0;j--){
 		printf("%d ", arr[j]);
 	}
 
