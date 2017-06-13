@@ -43,12 +43,13 @@ void func(Animal *xyz){
 
 int main()
 {
-	Animal *animal = new Animal;
+	//Animal *animal = new Animal;
+	Animal animal;
 	Cat *cat = new Cat;
 	Dog *mydog = new Dog;
 	//animal->eat();
 	//cat->eat();
-	func(animal);
+	func(&animal);
 	func(cat);
 	func(mydog);
 	return 0;
