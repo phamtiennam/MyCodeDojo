@@ -27,6 +27,7 @@ _main_(){
 
   local type_of_script="$1"
   local file_name="$2"
+  local platform="$(uname -s)"
   if [ -n "$file_name"  ]; then create_file $file_name; fi
 
   case $type_of_script in
@@ -42,7 +43,8 @@ _main_(){
       rm -rf ${file_name}.bak
       ;;  
     c)
-      os=".bak"
+      [ "$platform" == "Linux" ] && os=""
+      [ "$platform" == "Darwin" ] && os=".bak"
       sed -i $os "s/\#/\/\//g" "$file_name"
       rm -rf ${file_name}.bak
       ;;
