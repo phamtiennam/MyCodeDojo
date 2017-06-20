@@ -56,27 +56,77 @@ White 58 87 2
 //Date: 2017_06_16
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-#incluce <iostream>
+#include <iostream>
 
 class Person
 {
-
+public:
+	virtual void getdata(){};
+	virtual void putdata(){};
+protected:
+	int age;
+	std::string name;
 };
 
 class Professor : public Person
 {
+	int publications,id1;
+	static int cur_id1;
 public:
-	Professor();
-	~Professor();
-	
-};
+	virtual void getdata(){
+	 	cur_id1++;
+	 	std::cin >>name>>age>>publications;
+	 	id1=cur_id1;
+	 }
+	virtual void putdata(){
+	 	std::cout<<name<<" "<<age<<" "<<publications<<" "<<id1<<std::endl;
+	}
+}; int Professor::cur_id1 = 0;
 
 class Student : public Person
 {
+	int marks[6];
+	int id;
+	static int cur_id;
+	//static int sum_marks;
+	int sum_marks=0;
+public:
+	
+	 void getdata(){
+	 	cur_id++;
+	 	std::cin >>name>>age;
+	 	for(int i=0;i<6;i++){
+	 		std::cin>>marks[i];
+	 		sum_marks += marks[i];
+	 	}
+	 	id = cur_id;
+	 }
+	 void putdata(){
+	 	std::cout <<name<<" "<<age<<" "<<sum_marks<<" "<<id <<std::endl;
+	 }	
 	
 };
 
-int main(){
+int Student::cur_id = 0;
+//int Student::sum_marks = 0;
 
+int main(){
+	int n, val;
+	std::cin>>n; //the number of objects
+	Person *per[n];
+	for (int i = 0;i < n;i++){
+		std::cin>>val;
+		if(val == 1){
+			per[i] = new Professor;
+		} else {
+			per[i] = new Student;
+		}
+
+		per[i]->getdata();
+	}
+
+	for (int i = 0;i < n;i++){
+		per[i]->putdata();
+	}	
 	return 0;
 }
