@@ -22,7 +22,7 @@ int main() {
 	char s[]="HackerRank ",c[1024*4];
 	scanf("%d", &a);
 	scanf("%lf", &b);
-	//scanf("%[0-9a-zA-Z! ]s", c); //this code would'nt work with scanf in front.Have to add space 
+	//scanf("%[0-9a-zA-Z! ]s", c); // this code would'nt work with scanf in front.Have to add space 
 	scanf(" %[0-9a-zA-Z! ]s", c); //Scanf the string with letters from 0-9a-zA-z,! and white space  
 	printf("%d\n", i+a);
 	printf("%.1lf\n", d+b);
