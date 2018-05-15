@@ -29,76 +29,81 @@ using namespace std;
 int isInertial(int a[], int len)
 {
 	int retVal = 1;
+	int countOdd = 0;
 	if(len >= 2)
 	{
 		/*Sort the input array*/
 		sort(a,a+len);
-		cout << "\nArray after sorting: ";
-    	for (int i = 0; i < len; ++i)
+		
+    	/*Check if the maximum element is even*/
+    	if((a[len-1] % 2) == 0)  
     	{
-    		cout <<a[i]<<" ";
-    	}
-    	/*Check if the maximum element is even and the privious element in sorted array is odd*/
-    	if( ((a[len-1] % 2) == 0) &&((a[len-2] % 2) != 0))  
-    	{
-    		if(len >= 3)
+    		for(int i=len-2;(i-1)>= 0;i--)
     		{
-    			for(int i=len-3;i>=0;i--)
-    			{
-    				if((a[i]%2 == 0) &&(a[i-1]%2 != 0 ))
+
+ 					if((a[i] % 2 != 0)||(a[i-1] %2 != 0))
+ 					{
+ 						countOdd++;
+ 					}
+
+    				if((a[i] % 2 == 0) && (a[i] < a[len-1]) && (a[i-1] % 2 != 0 ))
     				{
-    					// there is a Even value is greter then Odd value
-    					break;
+    					cout<<"there is a Even value is greter then Odd value\n";
     					retVal = 0;
-    				    cout<<"\nThis is NOT an inertial array\n";	
+    				    break;
     				}
-    			}
+    		}
+
+    		if(countOdd == 0)
+    		{
+    			cout<<"Condition \"it contains at least one odd value\" not met\n";
+    			retVal = 0;
     		}
     	}
     	else
     	{
-    		cout<<"Condition not met for inertial array";
+    		cout<<"the maximum element is not even value \n";
     		retVal = 0;
     	}
 	}
 	else
 	{
-		cout<<len<<" is not valid Length for an inertial array\n";
+		cout<<"the lengh is not valid \n";
 		retVal = 0;
 	}
-	cout<<"\n";
 	return retVal;
 }
 
 int main()
 {
 	int a[1] = {1};
-	cout<<isInertial(a,1)<<endl;
+	cout<<isInertial(a,1)<<"------"<<endl;
 
 int a2[1] = {2};
-	cout<<isInertial(a2,1)<<endl;
+	cout<<isInertial(a2,1)<<"------"<<endl;
 
 int a3[4] = {1,2,3,4};
-	cout<<isInertial(a3,4)<<endl;
+	cout<<isInertial(a3,4)<<"------"<<endl;
 
 int a4[7] = {1,1,1,1,1,1,2};
-	cout<<isInertial(a4,7)<<endl;
+	cout<<isInertial(a4,7)<<"------"<<endl;
 
 int a5[6] = {2,12,4,6,8,11};
-	cout<<isInertial(a5,6)<<endl;
+	cout<<isInertial(a5,6)<<"------"<<endl;
 
 int a6[7] = {2,12,12,4,6,8,11};
-	cout<<isInertial(a6,7)<<endl;
+	cout<<isInertial(a6,7)<<"------"<<endl;
 
 int a7[5] = {-2,-4,-6,-8,-11};
-	cout<<isInertial(a7,5)<<endl;
+	cout<<isInertial(a7,5)<<"------"<<endl;
 
 int a8[4] = {2,3,4,7};
-	cout<<isInertial(a8,4)<<endl;
+	cout<<isInertial(a8,4)<<"------"<<endl;
 
 int a9[5] = {2,4,6,8,10};
-	cout<<isInertial(a9,5)<<endl;
+	cout<<isInertial(a9,5)<<"------"<<endl;
 
-
+int a10[5] = {-1,-8,-8,10,10};
+	cout<<"NAM Test--"<<isInertial(a10,5)<<"------"<<endl;
 	return 0;
 }
