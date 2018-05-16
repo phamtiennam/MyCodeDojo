@@ -1,3 +1,7 @@
+/*
+*Write a function named nextPerfectSquare that return the first perfect square that is greater than it's integer
+*argument. A perfect square is an integer that is equal to some integer squared
+*/
 #include <iostream>
 #include <cmath>
 
