@@ -74,6 +74,17 @@ int shiftLeft(int a[],int len)
   return 0;
 }
 
+int shiftRight(int a[],int len)
+{
+  int tmp = a[len-1];
+  for(int i=(len-1);i > 0;i--)
+  {
+    a[i] = a[i-1];
+  }
+  a[0] = tmp;
+  return 0;
+}
+
 int rotateCube(vector<vector<int> > *a , int i , int j , int sub_column, int sub_row, int rotate)
 {
   int len = (2*(sub_row + sub_column) - 4);
@@ -81,10 +92,26 @@ int rotateCube(vector<vector<int> > *a , int i , int j , int sub_column, int sub
   
   load_MatrixCircle_2_array(a,array,i,j,sub_column,sub_row,true);
   
-  for(int m=0;m<rotate;m++)
+  int rskip = rotate % len;
+  
+  if(rskip>(len/2))
   {
-    shiftLeft(array,len);  
+    rotate=len - rskip;
+    for(int m=0;m<rotate;m++)
+    {
+      shiftRight(array,len);
+    }
   }
+  else
+  {
+    rotate = rskip;
+    for(int m=0;m<rotate;m++)
+    {
+      shiftLeft(array,len);
+    } 
+  }
+    
+  
   
   load_MatrixCircle_2_array(a,array,i,j,sub_column,sub_row,false);
   return 0;
@@ -147,10 +174,7 @@ int main()
     vector<vector<int> > *p = &matrix;
     for(int b=0;b<emin;b++)
     {
-      //rotateCube(vector<vector<int> > *a , int i , int j , int sub_row , int sub_column , int rotate)
       rotateCube(p,b,b,n,m,r);
-      //cout<<"matrix[i][j]:"<<matrix[b][b]<<endl;
-      //rotateCube(p,0,0,m,n,r);
       m=m-2;
       n=n-2;
     }
