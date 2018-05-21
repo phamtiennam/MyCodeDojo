@@ -87,6 +87,7 @@ int rotateCube(vector<vector<int> > *a , int i , int j , int sub_column, int sub
   }
   
   load_MatrixCircle_2_array(a,array,i,j,sub_column,sub_row,false);
+  return 0;
 }
 
 vector<string> split_string(string input_string) {
