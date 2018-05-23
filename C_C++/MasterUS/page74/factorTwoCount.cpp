@@ -33,8 +33,8 @@ int factorTwoCount(int n)
 
 int main()
 {
-  count<<"48:"<<factorTwoCount(48)<<endl;
-  count<<"27:"<<factorTwoCount(27)<<endl;
-  count<<"-48:"<<factorTwoCount(-48)<<endl;
+  cout<<"48:"<<factorTwoCount(48)<<endl;
+  cout<<"27:"<<factorTwoCount(27)<<endl;
+  cout<<"-48:"<<factorTwoCount(-48)<<endl;
   return 0;
 }
