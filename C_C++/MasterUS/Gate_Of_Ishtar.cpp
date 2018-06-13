@@ -106,12 +106,13 @@ int calculate_damage_taken(tm *date, string champion)
 {
   if (holly_day(date->tm_wday) || invincible_champion(champion))
 	{
+    //cout<<"holly_day"<<endl;
     return 0 ;
   }
   else    /*calculate damage taken*/
   {
-    cout<<"tm_hour:"<<date->tm_hour<<endl;
-    cout<<"tm_min:"<<date->tm_min<<endl;
+    //cout<<"tm_hour:"<<date->tm_hour<<endl;
+    //cout<<"tm_min:"<<date->tm_min<<endl;
     /* "Janna" demon of Wind spawned */
 		if (( date->tm_hour == 6  )
 		    &&( date->tm_min  >= 0  )
@@ -198,61 +199,67 @@ int calculate_damage_taken(tm *date, string champion)
     @param date_string_intervals - list of date intervals strings
         when a champion passing the gate (e.g. ['XXXX-XX-XX XX:XX'])
 */
-int calculate_champion_health(string champion,string date_string_intervals[])
+
+int calculate_champion_health(string champion,vector<string> *date_string_intervals)
 {
-  int total_damage,damage,attempt=0;
+  int total_damage=0,damage=0,attempt=0;
   tm tm,pre_tm;
-  
-  int sizea = sizeof(date_string_intervals) / sizeof(string);
-  /*Sort array date_string_intervals*/
-  sort(date_string_intervals, date_string_intervals + sizea);
- 
   std::array<string, 5> listChampion = { "human", "wizard", "spirit", "giant", "vampire" };
   
-  /* Convert champion string to lowcase string */
+  /*Sort vector date_string_intervals*/
+  sort(date_string_intervals->begin(), date_string_intervals->end());
+ 
+  //* Convert champion string to lowcase string 
   transform(champion.begin(), champion.end(), champion.begin(), ::tolower);
   
   if (find(begin(listChampion), end(listChampion), champion) != std::end(listChampion))
   {
-    for(int i=0;i<sizea;i++)
+    
+    for (int i=0; i < date_string_intervals->size(); i++)
     {
         attempt++;
-        tm=convertString2time(date_string_intervals[i]);
+        tm=convertString2time(date_string_intervals->at(i));
         damage=calculate_damage_taken(&tm,champion);
-      
+        //cout<<"-------damage:----------"<<damage<<endl;
+        
         if((tm.tm_year == pre_tm.tm_year)&&(tm.tm_mon == pre_tm.tm_mon)&&(tm.tm_mday == pre_tm.tm_mday))
         {
-          /*Check if champion should only lose HP once every hour*/
+          //Check if champion should only lose HP once every hour//
           if(tm.tm_hour>pre_tm.tm_hour)
           {
-            total_damage += damage;
+            total_damage = total_damage + damage;
+            //cout<<"[sameday]total_damage"<<total_damage<<endl;
           }
         }
         else
         {
-          total_damage += damage;          
+          total_damage = total_damage + damage;
         }
-      
-        pre_tm=tm;
-        /*Check HP of Champion*/
-        if(total_damage > Champions.at(champion))
+        if(total_damage >= Champions.at(champion))
         {
-          Champions.at(champion) == 0;
-          cout<<"Sorry.The champion:"<<champion<<"has died"<<endl;
-          cout<<"Attempt:"<<attempt<<endl;
           break;
         }
-        else
-        {
-          Champions.at(champion) -= total_damage;
-        }
-        
+        pre_tm=tm;
     }
+    
+    cout<<"Attempts:"<<attempt<<endl;
+    
+    ///*Check HP of Champion
+    if(total_damage >= Champions.at(champion))
+    {
+          Champions.at(champion) = 0;
+    }
+    else
+    {
+          Champions.at(champion) -= total_damage;
+    }
+    
+    cout<<"Amount of health remained for a champion:"<<champion<<" is: "<<Champions.at(champion)<<endl;      
   }
   else
   {
-    /* The input champion's name is not found in the list of Champions*/
-    cout<<"Invalid champion's name"<<endl;
+    //* The input champion's name is not found in the list of Champions
+    cout<<"Invalid champion's name:"<<champion<<endl;
   }
 
     return total_damage;
@@ -261,21 +268,19 @@ int calculate_champion_health(string champion,string date_string_intervals[])
 /*========================MAIN-FUNC===========================================*/
 int main()
 { 
-  /*
-  calculate_champion_health("HUman","Haha");
-  calculate_champion_health("HUmanwsd","Haha");
-  calculate_champion_health("HumaN","Haha");
-  for (auto const& pair: Champions)
-  {
-    cout<<"{"<<pair.first<<":"<<pair.second<<"}\n";
-  }
-  //cout<<"HelloWorld";
-  */
-  string test="2018-06-13 20:00";
-    tm tma = convertString2time(test);
-  cout<<"Day is:"<<tma.tm_wday<<endl;
   
-  cout<<"Damage is:"<<calculate_damage_taken(&tma,"human")<<endl;
+  vector<string> strVec = {"2018-06-13 22:30", "2018-06-13 20:00", "2018-06-13 12:58", "2018-06-13 10:45",
+                           "2018-06-14 07:45", "2018-06-15 07:45", "2018-06-16 07:45","2018-06-19 07:45",
+                          "2018-06-13 07:45","2018-06-12 07:45","2018-06-20 07:45","2018-06-22 07:45" };
+  
+  vector<string> strVec1 = {"2018-07-xx 0x:xx"};
+ 
+  cout<<"==========Test1============== \
+         Total Damage is:"<<calculate_champion_health("humAN",&strVec)<<endl;
+  cout<<"==========Test2==============  \
+         Total Damage is:"<<calculate_champion_health("Zhuman",&strVec)<<endl;
+  cout<<"==========Test3==============  \
+         Total Damage is:"<<calculate_champion_health("wizard",&strVec1)<<endl;
   
   return 0;
 }
