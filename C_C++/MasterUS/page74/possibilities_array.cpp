@@ -92,5 +92,8 @@ int main()
   int a6[3] = {0,2,3};
   cout<<" a6[3] = {0,2,3}: "<<isAllPossibilities(a6,3)<<endl;
   
+  int b[] = {0,1,3,1,4,5,7,8,7};
+  cout<<" b[] = {0,1,3,1,4,5,7,8,7}: "<<isAllPossibilities(b,9)<<endl;
+  
   return 0;
 }
