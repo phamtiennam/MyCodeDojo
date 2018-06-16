@@ -28,6 +28,13 @@ int isAllPossibilities(int a[], int len)
 {
   int retVal=0,count=0;
   int b[len];
+ 
+  if((len < 0)||(a == NULL))
+  {
+    cout<<"Invalid input Parameters"<<endl;
+    retVal=0;
+    return retVal;
+  }
   
   if(len>1)
   {
@@ -54,7 +61,8 @@ int isAllPossibilities(int a[], int len)
     
     if(count == len)
     {
-      retVal = 1;      
+      retVal = 1;  
+      return retVal;
     }
   }
   else
@@ -62,6 +70,7 @@ int isAllPossibilities(int a[], int len)
     if((len == 1) && (a[0] == 0))
     {
       retVal = 1;
+      return retVal;
     }
   }
   return retVal;
