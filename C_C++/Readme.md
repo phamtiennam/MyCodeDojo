@@ -14,4 +14,4 @@
 ## Donate
 If you appreciate that, please consider donating to the Developer.
 
-[![Donate](https://cdn.pbrd.co/images/HyQFKkP.png)](https://www.paypal.me/TIENNAMPHAM)
+[![Here]()](https://www.paypal.me/TIENNAMPHAM)
