@@ -9,3 +9,9 @@
 |1|[Non-decreasing Array](https://github.com/phamtiennam/MyCodeDojo/blob/master/C_C%2B%2B/non-decreasing_by_modifying_1_element.cpp)|Medium|C++|[]||
 |2|[]()|Medium|C++|[]||
 |3|[]()|Medium|C++|[]||
+
+
+## Donate
+If you appreciate that, please consider donating to the Developer.
+
+[![Donate](https://cdn.pbrd.co/images/HyQFKkP.png)](https://www.paypal.me/TIENNAMPHAM)
