@@ -12,6 +12,6 @@
 
 
 ## Donate
-If you appreciate that, please consider donating to the Developer.
+If you appreciate this work, please consider donating to the Developer.
 
-[![Here]()](https://www.paypal.me/TIENNAMPHAM)
+[[Here]](https://www.paypal.me/TIENNAMPHAM)
