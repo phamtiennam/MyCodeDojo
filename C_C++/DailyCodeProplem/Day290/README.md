@@ -17,22 +17,8 @@ Arrangement       |   Change
 ['B', 'G']                | (B, G) -> R
 ['R']                     |
 ```
-## Solution 1
 
-One way to solve this problem would be to try every possible sequence of transformations, and find the one that results in the smallest result.
-
-We can make this approach a little more methodical using recursion. For a given starting array, any transformation will turn the array into a new one with one fewer element, to which we can then re-apply our function. At each step of our process we can apply our function to all possible transformation and return the minimal outcome.
-
-The base case for this recursion is when all the Quxes in the line are the same color. In this case no moves are possible, so we must return the length of the line.
-
-COLORS = {'R', 'G', 'B'}
-
-
-For any array, there may be N - 1 possible transformations to apply, where N is the length of the array. As a result, we may need to call our function (N - 1) * (N - 2) * ... * 1 times, as the number of possible sequences proliferates. The time of complexity of this algorithm is therefore O(N!).
-
-## Solution 2
-
-Fortunately, we can use math to find a more elegant solution.
+## Solution 
 
 First, recall that any integer must be either even or odd, a quality known as its parity. Now suppose we have three integers (a, b, c), representing the number of Quxes of each color. For any given configuration there will be four cases:
 ```
